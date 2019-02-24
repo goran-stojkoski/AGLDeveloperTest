@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-The following class tests if the get_pet_names_by_field from the json_pet_parser module is working correctly.
+The following class tests if the get_pet_names_by_field from the pet_parser module is working correctly.
 It tests two valid input conditions, an invalid pet type exception and an invalid person group exception
 """
 
@@ -20,6 +20,7 @@ class PetParserTest(unittest.TestCase):
                                     ('Male', 'Jim'),
                                     ('Male', 'Max'),
                                     ('Male', 'Tom')]
+
     # Run Unit Test
     def test_pet_parser(self):
         gender_cat = PetParser.pet_parser(static.constants.mock_data, 'Cat', 'gender')

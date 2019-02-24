@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-The following module utilises the Json_Pet_Parser class from the json_pet_parser module. It renders a html template to display the requested data
+The following module utilises the PetParser class from the pet_parser module. It renders a html template to display the requested data
 """
 
 from flask import Flask, render_template, request, flash
