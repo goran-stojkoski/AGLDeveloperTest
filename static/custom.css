@@ -1,0 +1,15 @@
+/*THIS IS FROM AN ONLINE STYLING TEMPLATE*/
+
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-item {
+  color: #cbd5db;
+}

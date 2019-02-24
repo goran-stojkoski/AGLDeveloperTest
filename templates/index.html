@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
+    <title>AGL Developer Test - Goran Stojkoski</title>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="/">AGL Developer Test</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-nav">
+                <text class="nav-item nav-item">Goran Stojkoski</text>
+            </div>
+        </div>
+        </div>
+    </nav>
+</header>
+<main role="main" class="container">
+    <div>
+        <form method="POST">
+            <div class="input-group">
+                {% for selection_field, field_list in selection_fields.items() %}
+                    <select class="custom-select" id="inputGroupSelect01" name={{ selection_field }}>
+                        <option value="" disabled selected>{{ selection_field.replace("_"," ").title() }}</option>
+                        {% for item in field_list %}
+                            <option value={{ item }}>{{ item.title() }}</option>
+                        {% endfor %}
+                    </select>
+                {% endfor %}
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-outline-secondary" id="button-addon2">
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>No Styling</h2>
+            {% for i in range(pet_names|length) %}
+                {% if i == 0 or pet_names[i][0] != pet_names[i-1][0] %}
+                    <h3> {{ pet_names[i][0] }}</h3>
+                {% endif %}
+                <li>{{ pet_names[i][1] }}</li>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <h2>Bootstrap Styling</h2>
+            <ul class="list-group">
+                {% for i in range(pet_names|length) %}
+                    {% if i == 0 or pet_names[i][0] != pet_names[i-1][0] %}
+                        <br>
+                        <h3 class="list-group-item"> {{ pet_names[i][0] }}</h3>
+                    {% endif %}
+                    <li class="list-group-item">{{ pet_names[i][1] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <br>
+    <small>Created by Goran Stojkoski |
+        <a href="https://zety.com/mycv/goran-stojkoski">resume</a> |
+        <a href="https://www.linkedin.com/in/goran-stojkoski/">LinkedIn</a> |
+        <a href="https://github.com/goran-stojkoski">GitHub</a></small>
+</main>
+</body>
+</html>
